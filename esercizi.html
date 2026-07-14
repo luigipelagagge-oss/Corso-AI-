@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizi Pratici - IA nella Didattica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --bg-warm: #fdfbf7;
+            --accent-amber: #d97706;
+            --accent-blue: #0369a1;
+            --accent-teal: #0d9488;
+            --accent-red: #dc2626;
+            --accent-green: #16a34a;
+            --text-main: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .esercizio-card {
+            transition: all 0.2s ease;
+        }
+        .esercizio-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .prompt-buono {
+            border-left: 4px solid var(--accent-green);
+            background-color: #f0fdf4;
+        }
+
+        .prompt-cattivo {
+            border-left: 4px solid var(--accent-red);
+            background-color: #fef2f2;
+        }
+
+        .badge-modulo {
+            background: linear-gradient(135deg, var(--accent-amber), var(--accent-teal));
+        }
+
+        .badge-competenza {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+
+        .btn-consegna {
+            background: linear-gradient(135deg, var(--accent-amber), var(--accent-teal));
+            transition: transform 0.2s ease;
+        }
+        .btn-consegna:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-card px-6 py-4 mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">Hub <span class="text-amber-600 underline">Didattico</span></h1>
+            <div class="hidden md:flex space-x-6 font-medium text-sm">
+                <a href="index.html" class="hover:text-amber-600 transition">← Home</a>
+                <a href="#modulo1" class="hover:text-amber-600 transition">Modulo 1</a>
+                <a href="#modulo2" class="hover:text-amber-600 transition">Modulo 2</a>
+                <a href="#integrativi" class="hover:text-amber-600 transition">Integrativi</a>
+                <a href="#consegna" class="hover:text-amber-600 transition">Consegna</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 pb-20">
+
+        <!-- Header -->
+        <header class="text-center mb-16 fade-in">
+            <span class="inline-block px-4 py-1 badge-modulo text-white text-xs font-bold rounded-full uppercase tracking-wider mb-4">Laboratorio</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900">🧪 Esercizi Pratici</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Metti in pratica le competenze acquisite durante il corso. Ogni esercizio include esempi di 
+                <strong class="text-green-600">prompt efficaci</strong> e <strong class="text-red-600">prompt inefficaci</strong> 
+                per comprendere l'importanza del Prompt Engineering.
+            </p>
+            <div class="flex justify-center gap-6 mt-4 text-sm text-slate-500">
+                <span>📚 8 esercizi</span>
+                <span>•</span>
+                <span>⏱️ 20-40 minuti ciascuno</span>
+                <span>•</span>
+                <span>🎯 Focus su Storia del 5° anno</span>
+            </div>
+        </header>
+
+        <!-- ====== MODULO 1 ====== -->
+        <section id="modulo1" class="mb-20 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="text-3xl">📖</span>
+                <h2 class="text-3xl font-bold text-slate-800">Modulo 1: Fondamenti e Strumenti</h2>
+            </div>
+
+            <!-- Esercizio 1.1 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-amber-600">1.1</span>
+                        <h3 class="text-xl font-bold text-slate-800">Creare una Lezione con l'IA</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Generazione materiali</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-medium">⏱️ 30'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Utilizza un LLM a scelta per generare il materiale per una lezione su <strong>"La Guerra Fredda"</strong>. La lezione deve includere: introduzione, 3-5 punti chiave, 3 domande di verifica, un'attività di gruppo.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <!-- Prompt buono -->
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                            <span class="text-xs text-slate-400">(funziona)</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Sei un esperto di storia contemporanea. 
+Prepara una lezione sulla Guerra Fredda per una classe di 5° superiore.
+
+Struttura richiesta:
+1. Introduzione al contesto storico (dopo il 1945)
+2. 5 punti chiave da approfondire (con date ed eventi principali)
+3. 3 domande di comprensione per la verifica
+4. Un'attività di gruppo (simulazione o dibattito)
+
+Usa un linguaggio chiaro e adatto a studenti di 17-18 anni.
+Includi riferimenti a fonti storiche."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Perché funziona: ruolo definito, struttura chiara, contesto specifico.</p>
+                    </div>
+
+                    <!-- Prompt cattivo -->
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                            <span class="text-xs text-slate-400">(non funziona)</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Fammi una lezione sulla Guerra Fredda"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Perché non funziona: troppo vago, non specifica struttura, pubblico, livello, contenuti richiesti.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esercizio 1.2 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-amber-600">1.2</span>
+                        <h3 class="text-xl font-bold text-slate-800">Linea del Tempo Interattiva</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Strumenti visivi</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-medium">⏱️ 20'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Usa <strong>Canva</strong> o <strong>Gamma</strong> per creare una linea del tempo sui <strong>totalitarismi del Novecento</strong> (fascismo, nazismo, stalinismo). Includi almeno 6 eventi per ciascuno.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Sei un assistente esperto di storia. 
+Elenca gli eventi principali del fascismo italiano, del nazismo tedesco e dello stalinismo sovietico (almeno 6 per ogni regime).
+Per ogni evento indica: data, luogo, descrizione e contesto.
+Organizza gli eventi in ordine cronologico.
+Il risultato sarà usato per creare una linea del tempo su Canva."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Chiede dati strutturati, pronti per essere visualizzati.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Fammi una lista di eventi sui totalitarismi"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Non specifica quali totalitarismi, quanti eventi, formato di output.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esercizio 1.3 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-amber-600">1.3</span>
+                        <h3 class="text-xl font-bold text-slate-800">Analisi di un Documento Storico</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Analisi fonti</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-medium">⏱️ 25'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Carica un documento storico (es. <strong>"Discorso di Churchill a Fulton"</strong>) e chiedi all'IA di analizzarlo.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Analizza il seguente documento storico (Discorso di Churchill a Fulton, 1946).
+1. Identifica i concetti chiave
+2. Contestualizza il documento (chi, quando, dove, perché)
+3. Spiega il significato della frase 'cortina di ferro'
+4. Suggerisci 3 domande per l'analisi in classe
+
+Testo: [incolla il documento]"</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Richiede un'analisi strutturata e contestualizzata.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Spiegami questo discorso"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Non chiede contesto, analisi critica o domande per la classe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== MODULO 2 ====== -->
+        <section id="modulo2" class="mb-20 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="text-3xl">🧊</span>
+                <h2 class="text-3xl font-bold text-slate-800">Modulo 2: Prompt Engineering</h2>
+            </div>
+
+            <!-- Esercizio 2.1 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-teal-600">2.1</span>
+                        <h3 class="text-xl font-bold text-slate-800">Piano di Lezione con Prompt Engineering</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Role + CoT</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-medium">⏱️ 30'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Usa <strong>DeepSeek</strong> per generare un piano di lezione su <strong>"Decolonizzazione e movimenti di liberazione nazionale"</strong>. Applica: Role Prompting, Formato vincolato, Chain-of-Thought.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Sei un esperto di storia contemporanea con 20 anni di esperienza nell'insegnamento.
+
+Prepara un piano di lezione dettagliato sulla decolonizzazione e i movimenti di liberazione nazionale per una classe di 5° superiore.
+
+Segui questa struttura:
+1. Obiettivi della lezione
+2. Conoscenze pregresse necessarie
+3. Svolgimento (fasi e tempi)
+4. Materiali e risorse
+5. Verifica e valutazione
+
+Spiega passo passo il tuo ragionamento per ogni scelta metodologica.
+
+Lunghezza: circa 1000 parole. Usa un linguaggio chiaro e coinvolgente."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Ruolo definito, struttura dettagliata, richiesta di ragionamento esplicito.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Fammi un piano di lezione sulla decolonizzazione"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Manca contesto, struttura, ruolo, lunghezza, formato.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esercizio 2.2 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-teal-600">2.2</span>
+                        <h3 class="text-xl font-bold text-slate-800">Few-Shot per Esercizi di Comprensione</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Few-shot</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-medium">⏱️ 20'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Usa <strong>DeepSeek</strong> per generare 5 domande a risposta aperta sulla <strong>Prima Guerra Mondiale</strong>. Fornisci 2 esempi di domande (few-shot) e chiedi di seguire lo stesso stile.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Genera 5 domande a risposta aperta sulla Prima Guerra Mondiale.
+Le domande devono essere di livello 5° superiore e richiedere un'analisi critica.
+
+Ecco 2 esempi del formato desiderato:
+Esempio 1: 'Quali furono le cause profonde della Prima Guerra Mondiale? Analizza il ruolo del sistema di alleanze e del nazionalismo.'
+Esempio 2: 'In che modo la guerra di trincea ha cambiato la percezione del conflitto da parte dei soldati? Utilizza esempi concreti.'
+
+Segui lo stesso stile: domande aperte, analitiche, che richiedono esempi e ragionamento."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Fornisce esempi chiari e contesto sul livello e lo stile desiderato.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Fammi delle domande sulla Prima Guerra Mondiale"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Non specifica numero, formato, livello, stile delle domande.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esercizio 2.3 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-teal-600">2.3</span>
+                        <h3 class="text-xl font-bold text-slate-800">Chain-of-Thought per un Problema Complesso</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Chain-of-Thought</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-medium">⏱️ 25'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Usa <strong>DeepSeek</strong> per analizzare le cause del <strong>crollo del muro di Berlino</strong> applicando la tecnica chain-of-thought (ragionamento passo-passo).</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Analizza le cause del crollo del muro di Berlino (1989).
+Segui questo ragionamento passo passo:
+
+1. Identifica i fattori politici interni alla Germania Est
+2. Identifica i fattori economici e sociali
+3. Identifica i fattori internazionali (URSS, USA, Europa)
+4. Spiega come questi fattori si sono intrecciati
+5. Concludi con una sintesi delle cause principali
+
+Per ogni passo, fornisci esempi concreti e riferimenti storici."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Guida l'IA in un ragionamento strutturato, passo dopo passo.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Perché è caduto il muro di Berlino?"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Risposta generica, senza articolazione dei fattori e senza ragionamento esplicito.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== ESERCIZI INTEGRATIVI ====== -->
+        <section id="integrativi" class="mb-20 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="text-3xl">🔗</span>
+                <h2 class="text-3xl font-bold text-slate-800">Esercizi Integrativi</h2>
+            </div>
+
+            <!-- Esercizio 3.1 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-amber-600">3.1</span>
+                        <h3 class="text-xl font-bold text-slate-800">Gioco Didattico con l'IA</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Creatività</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-medium">⏱️ 40'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Usa un LLM per generare un <strong>gioco di ruolo</strong> sulle <strong>Rivoluzioni del 1848</strong>. Coinvolgi almeno 4 personaggi storici, con dinamiche decisionali.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Sei un game designer esperto di storia.
+Crea un gioco di ruolo didattico sulle Rivoluzioni del 1848.
+
+Requisiti:
+- 4 personaggi storici (es. Mazzini, Metternich, un rivoluzionario francese, un cittadino tedesco)
+- Ogni personaggio ha un obiettivo e un conflitto
+- 3 scenari decisionali (cosa farebbe il giocatore nei panni del personaggio?)
+- Regole semplici e adatte a studenti di 17-18 anni
+
+Il gioco deve durare circa 30 minuti e stimolare il dibattito."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Richiede un prodotto strutturato e pronto per l'uso in classe.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Fammi un gioco sulle rivoluzioni del 1848"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Manca qualsiasi specifica su personaggi, meccaniche, durata, obiettivi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esercizio 3.2 -->
+            <div class="esercizio-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-bold text-amber-600">3.2</span>
+                        <h3 class="text-xl font-bold text-slate-800">Critica dell'Output IA</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 badge-competencia rounded-full text-xs font-medium">Pensiero critico</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-medium">⏱️ 20'</span>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 mb-4"><strong>Consegna:</strong> Genera con l'IA un riassunto su <strong>"Il Fascismo"</strong>. Verifica la correttezza storica, identifica omissioni, correggi il testo.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="prompt-buono p-4 rounded-lg border border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-green-600 text-sm font-bold">✅ PROMPT EFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-green-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Genera un riassunto di 200 parole sul Fascismo italiano.
+Includi: ascesa al potere, caratteristiche principali, politica interna, politica estera, fine del regime.
+Usa un linguaggio neutro e basato su fonti storiche attendibili."</pre>
+                        <p class="text-xs text-green-700 mt-2">💡 Richiede un riassunto strutturato e verificabile.</p>
+                    </div>
+                    <div class="prompt-cattivo p-4 rounded-lg border border-red-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-red-600 text-sm font-bold">❌ PROMPT INEFFICACE</span>
+                        </div>
+                        <pre class="text-xs bg-white p-3 rounded border border-red-100 overflow-x-auto text-slate-700 font-mono whitespace-pre-wrap">
+"Spiegami il fascismo"</pre>
+                        <p class="text-xs text-red-700 mt-2">💡 Risposta generica, senza struttura, difficile da verificare e correggere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== TABELLA RIEPILOGATIVA ====== -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">📋 Riepilogo degli Esercizi</h2>
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-slate-50">
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Codice</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Modulo</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Titolo</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Competenza</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-amber-600">1.1</td>
+                            <td class="px-4 py-3">Modulo 1</td>
+                            <td class="px-4 py-3">Creare una Lezione</td>
+                            <td class="px-4 py-3">Generazione materiali</td>
+                            <td class="px-4 py-3">30'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-amber-600">1.2</td>
+                            <td class="px-4 py-3">Modulo 1</td>
+                            <td class="px-4 py-3">Linea del Tempo</td>
+                            <td class="px-4 py-3">Strumenti visivi</td>
+                            <td class="px-4 py-3">20'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-amber-600">1.3</td>
+                            <td class="px-4 py-3">Modulo 1</td>
+                            <td class="px-4 py-3">Analisi Documento</td>
+                            <td class="px-4 py-3">Analisi fonti</td>
+                            <td class="px-4 py-3">25'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-teal-600">2.1</td>
+                            <td class="px-4 py-3">Modulo 2</td>
+                            <td class="px-4 py-3">Piano con Prompt Eng.</td>
+                            <td class="px-4 py-3">Role + CoT</td>
+                            <td class="px-4 py-3">30'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-teal-600">2.2</td>
+                            <td class="px-4 py-3">Modulo 2</td>
+                            <td class="px-4 py-3">Few-Shot per Esercizi</td>
+                            <td class="px-4 py-3">Few-shot</td>
+                            <td class="px-4 py-3">20'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-teal-600">2.3</td>
+                            <td class="px-4 py-3">Modulo 2</td>
+                            <td class="px-4 py-3">Chain-of-Thought</td>
+                            <td class="px-4 py-3">Chain-of-Thought</td>
+                            <td class="px-4 py-3">25'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-amber-600">3.1</td>
+                            <td class="px-4 py-3">Integrativo</td>
+                            <td class="px-4 py-3">Gioco Didattico</td>
+                            <td class="px-4 py-3">Creatività</td>
+                            <td class="px-4 py-3">40'</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-amber-600">3.2</td>
+                            <td class="px-4 py-3">Integrativo</td>
+                            <td class="px-4 py-3">Critica Output IA</td>
+                            <td class="px-4 py-3">Pensiero critico</td>
+                            <td class="px-4 py-3">20'</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ====== COME CONSEGNARE ====== -->
+        <section id="consegna" class="scroll-mt-24">
+            <div class="p-8 bg-gradient-to-r from-amber-50 to-teal-50 rounded-2xl border-2 border-amber-200">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-4xl">📤</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Come Consegna</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="text-xl block mb-2">1️⃣</span>
+                        <h4 class="font-bold text-slate-800">Svolgi l'esercizio</h4>
+                        <p class="text-sm text-slate-600">Segui la consegna e utilizza il prompt efficace come modello. Sperimenta anche con il prompt inefficace per vedere la differenza.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="text-xl block mb-2">2️⃣</span>
+                        <h4 class="font-bold text-slate-800">Documenta il processo</h4>
+                        <p class="text-sm text-slate-600">Salva il prompt utilizzato, la risposta dell'IA e le tue osservazioni (correzioni, aggiunte, riflessioni).</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="text-xl block mb-2">3️⃣</span>
+                        <h4 class="font-bold text-slate-800">Condividi</h4>
+                        <p class="text-sm text-slate-600">Carica il materiale nella <strong>area condivisione del corso</strong> o invialo via email. Discuteremo insieme i risultati.</p>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="index.html#consegne" class="inline-block px-8 py-3 btn-consegna text-white font-bold rounded-xl shadow-lg transition hover:scale-105">
+                        📋 Vai alla sezione Consegne
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <p>© 2024 Corso Fondamenti di IA - Guida Metodologica per Docenti</p>
+        <p class="mt-2">
+            <a href="index.html" class="text-amber-600 hover:underline">← Torna alla bacheca moduli</a>
+        </p>
+    </footer>
+
+</body>
+</html>
