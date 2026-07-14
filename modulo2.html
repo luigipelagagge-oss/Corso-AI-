@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo 2: Strumenti e Prompt Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --bg-warm: #fdfbf7;
+            --accent-amber: #d97706;
+            --accent-blue: #0369a1;
+            --accent-teal: #0d9488;
+            --text-main: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--accent-amber);
+            color: var(--accent-amber);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .tool-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .prompt-demo {
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        .badge-modulo {
+            background: linear-gradient(135deg, var(--accent-amber), var(--accent-teal));
+        }
+
+        .tab-button {
+            transition: all 0.2s ease;
+        }
+        .tab-button.active {
+            background-color: var(--accent-teal);
+            color: white;
+        }
+        .tab-button:not(.active) {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #e2e8f0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-card px-6 py-4 mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">L'IA <span class="text-amber-600 underline">Probabilistica</span></h1>
+            <div class="hidden md:flex space-x-6 font-medium text-sm">
+                <a href="index.html" class="hover:text-amber-600 transition">← Home</a>
+                <a href="#intro" class="nav-link hover:text-amber-600 transition active">Intro</a>
+                <a href="#strumenti" class="nav-link hover:text-amber-600 transition">Strumenti</a>
+                <a href="#prompt" class="nav-link hover:text-amber-600 transition">Prompt</a>
+                <a href="#avanzate" class="nav-link hover:text-amber-600 transition">Avanzate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 pb-20">
+
+        <!-- Header -->
+        <header class="text-center mb-16 fade-in">
+            <span class="inline-block px-4 py-1 badge-modulo text-white text-xs font-bold rounded-full uppercase tracking-wider mb-4">Modulo 2</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900">Strumenti e Prompt Engineering</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Un'esplorazione pratica degli strumenti a disposizione dei docenti e delle tecniche per dialogare efficacemente con le macchine.
+            </p>
+            <div class="flex items-center justify-center gap-4 mt-4 text-sm text-slate-500">
+                <span>⏱️ Durata: 2 ore</span>
+                <span>•</span>
+                <span>🎯 Focus: DeepSeek</span>
+            </div>
+        </header>
+
+        <!-- ====== RICHIAMO AL MODULO 1 ====== -->
+        <section id="intro" class="mb-16 scroll-mt-24">
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-8">
+                <div class="flex items-start gap-4">
+                    <span class="text-3xl">📌</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-blue-800 mb-2">Riepilogo Modulo 1</h2>
+                        <p class="text-blue-700 leading-relaxed">
+                            Nel primo modulo abbiamo esplorato i <strong>paradigmi dell'IA</strong> e creato materiali didattici utilizzando:
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-3 py-1 bg-white rounded-full text-sm text-blue-700 shadow-sm">🧠 Gemini</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-sm text-blue-700 shadow-sm">🎨 Canva</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-sm text-blue-700 shadow-sm">📊 Wayground</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-sm text-blue-700 shadow-sm">⚡ Brisk</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-sm text-blue-700 shadow-sm">📑 Gamma</span>
+                        </div>
+                        <p class="text-sm text-blue-600 mt-3">
+                            <strong>Per gli assenti:</strong> consulta la <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" target="_blank" class="underline font-medium hover:text-blue-900">guida completa del Modulo 1</a> per creare autonomamente i tuoi materiali.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== INTRO MODULO 2 ====== -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-amber-50 to-teal-50 rounded-2xl p-8 border border-amber-200">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">🎯 Obiettivi del Modulo 2</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <span class="text-2xl block mb-2">🔍</span>
+                        <h3 class="font-bold text-sm text-slate-700">Analisi Comparativa</h3>
+                        <p class="text-xs text-slate-500">Conoscere i principali LLM e i loro casi d'uso ottimali a scuola</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <span class="text-2xl block mb-2">✍️</span>
+                        <h3 class="font-bold text-sm text-slate-700">Prompt Engineering</h3>
+                        <p class="text-xs text-slate-500">Regole d'oro per ottenere risposte di qualità</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <span class="text-2xl block mb-2">🧩</span>
+                        <h3 class="font-bold text-sm text-slate-700">Tecniche Avanzate</h3>
+                        <p class="text-xs text-slate-500">Few-shot, chain-of-thought e strategie pratiche</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SEZIONE 1: STRUMENTI COMPARATIVI ====== -->
+        <section id="strumenti" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-4 text-slate-800 border-l-4 border-teal-500 pl-4">1. Analisi Comparativa tra LLM</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl">
+                Panoramica sui principali Large Language Models disponibili e i loro casi d'uso ottimali a scuola.  
+                <strong class="text-teal-700">Focus del modulo: DeepSeek</strong>
+            </p>
+
+            <!-- Tabs per la comparativa -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button class="tab-button active px-4 py-2 rounded-lg text-sm font-medium" data-tab="deepseek">🧊 DeepSeek</button>
+                <button class="tab-button px-4 py-2 rounded-lg text-sm font-medium" data-tab="chatgpt">💬 ChatGPT</button>
+                <button class="tab-button px-4 py-2 rounded-lg text-sm font-medium" data-tab="claude">🧠 Claude</button>
+                <button class="tab-button px-4 py-2 rounded-lg text-sm font-medium" data-tab="gemini">✨ Gemini</button>
+            </div>
+
+            <!-- DeepSeek -->
+            <div id="tab-deepseek" class="tab-content active">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">🧊</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">DeepSeek</h3>
+                            <p class="text-sm text-teal-600 font-medium mb-3">Focus del Modulo 2</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• <strong>Modello open source</strong> cinese con prestazioni competitive</li>
+                                <li>• <strong>Eccellente per:</strong> elaborazione di testi lunghi, analisi logica, coding</li>
+                                <li>• <strong>Punti di forza:</strong> contesto di 1M token, ottimo per documenti scolastici</li>
+                                <li>• <strong>In aula:</strong> ideale per analisi di testi letterari, correzione bozze, generazione di esercizi</li>
+                            </ul>
+                            <div class="mt-4 p-4 bg-teal-50 rounded-lg border border-teal-200">
+                                <p class="text-sm text-teal-800">
+                                    <strong>💡 Suggerimento:</strong> Usa DeepSeek per analizzare testi lunghi (es. romanzi) grazie al suo contesto esteso.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ChatGPT -->
+            <div id="tab-chatgpt" class="tab-content">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">💬</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">ChatGPT</h3>
+                            <p class="text-sm text-slate-500 font-medium mb-3">OpenAI</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• Il LLM più diffuso e versatile</li>
+                                <li>• <strong>Eccellente per:</strong> conversazioni, brainstorming, scrittura creativa</li>
+                                <li>• <strong>In aula:</strong> ideale per simulare dialoghi, generare domande di comprensione, creare storie</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Claude -->
+            <div id="tab-claude" class="tab-content">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">🧠</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Claude</h3>
+                            <p class="text-sm text-slate-500 font-medium mb-3">Anthropic</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• Modello con forte attenzione alla <strong>sicurezza e all'etica</strong></li>
+                                <li>• <strong>Eccellente per:</strong> analisi critica, revisione di testi, discussioni delicate</li>
+                                <li>• <strong>In aula:</strong> perfetto per dibattiti, educazione civica, tematiche sensibili</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemini -->
+            <div id="tab-gemini" class="tab-content">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">✨</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Gemini</h3>
+                            <p class="text-sm text-slate-500 font-medium mb-3">Google</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li>• Modello multimodale (testo, immagini, audio)</li>
+                                <li>• <strong>Eccellente per:</strong> analisi visive, contenuti multimediali, cross-modale</li>
+                                <li>• <strong>In aula:</strong> ottimo per progetti interdisciplinari, analisi di immagini, STEAM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabella riepilogativa -->
+            <div class="mt-8 overflow-x-auto">
+                <table class="w-full text-sm bg-white rounded-xl shadow-sm border border-slate-200">
+                    <thead>
+                        <tr class="bg-slate-50">
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Modello</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Punto di Forza</th>
+                            <th class="px-4 py-3 text-left font-semibold text-slate-700">Uso in Aula</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-4 py-3 font-medium">🧊 DeepSeek</td>
+                            <td class="px-4 py-3 text-slate-600">Contesto lungo (1M token)</td>
+                            <td class="px-4 py-3 text-slate-600">Analisi testi lunghi, documenti</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">💬 ChatGPT</td>
+                            <td class="px-4 py-3 text-slate-600">Versatile, creatività</td>
+                            <td class="px-4 py-3 text-slate-600">Brainstorming, scrittura</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">🧠 Claude</td>
+                            <td class="px-4 py-3 text-slate-600">Sicurezza, etica</td>
+                            <td class="px-4 py-3 text-slate-600">Dibattiti, tematiche delicate</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">✨ Gemini</td>
+                            <td class="px-4 py-3 text-slate-600">Multimodale</td>
+                            <td class="px-4 py-3 text-slate-600">Progetti interdisciplinari</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ====== SEZIONE 2: PROMPT ENGINEERING ====== -->
+        <section id="prompt" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-4 text-slate-800 border-l-4 border-amber-500 pl-4">2. Prompt Engineering</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl">
+                Le regole d'oro per ottenere risposte di qualità dall'IA.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Regola 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 prompt-demo">
+                    <span class="text-3xl block mb-3">🎯</span>
+                    <h3 class="font-bold text-slate-800">Chiarezza e Precisione</h3>
+                    <p class="text-sm text-slate-600 mt-2">Scrivi prompt specifici e contestualizzati. Meno ambiguità = risposta migliore.</p>
+                    <div class="mt-4 p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
+                        ❌ "Spiega la poesia"<br>
+                        ✅ "Analizza il sonetto di Petrarca 'Erano i capei d'oro a l'aura sparsi' evidenziando le metafore e il lessico amoroso"
+                    </div>
+                </div>
+
+                <!-- Regola 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 prompt-demo">
+                    <span class="text-3xl block mb-3">🎭</span>
+                    <h3 class="font-bold text-slate-800">Assegna un Ruolo</h3>
+                    <p class="text-sm text-slate-600 mt-2">Dai all'IA una personalità. I risultati cambiano radicalmente.</p>
+                    <div class="mt-4 p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
+                        "Sei un professore di letteratura italiana. Spiega il verismo a una classe di 5° superiore."
+                    </div>
+                </div>
+
+                <!-- Regola 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 prompt-demo">
+                    <span class="text-3xl block mb-3">📐</span>
+                    <h3 class="font-bold text-slate-800">Formato e Vincoli</h3>
+                    <p class="text-sm text-slate-600 mt-2">Specifica il formato di output: lunghezza, stile, struttura.</p>
+                    <div class="mt-4 p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
+                        "Genera 5 domande a risposta multipla su 'I Malavoglia'. Ogni domanda ha 4 opzioni. Fornisci le risposte corrette."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esempio interattivo -->
+            <div class="mt-10 p-6 bg-slate-800 text-white rounded-2xl">
+                <h3 class="text-lg font-bold mb-3">💡 Esempio Pratico</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-sm text-slate-300 mb-2">Prompt semplice</p>
+                        <div class="p-4 bg-slate-700 rounded-lg text-sm font-mono text-slate-300">
+                            "Spiega l'Illuminismo"
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">→ Risposta generica e poco strutturata</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-300 mb-2">Prompt ingegnerizzato</p>
+                        <div class="p-4 bg-amber-600/20 border border-amber-500/30 rounded-lg text-sm font-mono text-amber-200">
+                            "Sei un professore di storia. Spiega l'Illuminismo a studenti di 3° superiore in 5 punti chiave. Usa esempi concreti e un linguaggio chiaro. Concludi con 3 domande di comprensione."
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">→ Risposta strutturata, chiara, pronta per l'uso in classe</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SEZIONE 3: TECNICHE AVANZATE ====== -->
+        <section id="avanzate" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-4 text-slate-800 border-l-4 border-teal-500 pl-4">3. Tecniche Avanzate</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl">
+                Strategie per guidare l'IA verso risposte più accurate e strutturate.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Few-Shot Prompting -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">📚</span>
+                        <h3 class="text-xl font-bold text-slate-800">Few-Shot Prompting</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Fornire esempi</strong> all'IA per guidarne il comportamento. Mostra cosa vuoi ottenere.
+                    </p>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <p class="text-xs font-mono text-slate-600">
+                            <span class="text-amber-600">Esempio 1:</span> "L'analisi è chiara e ben strutturata" → ✅<br>
+                            <span class="text-amber-600">Esempio 2:</span> "L'analisi è confusa e poco approfondita" → ❌<br><br>
+                            <span class="text-teal-600">Ora:</span> Analizza questo testo seguendo lo stile dell'Esempio 1.
+                        </p>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3">
+                        ✅ Ottimo per valutazioni, correzioni, generazione di contenuti strutturati.
+                    </p>
+                </div>
+
+                <!-- Chain-of-Thought -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🧩</span>
+                        <h3 class="text-xl font-bold text-slate-800">Chain-of-Thought</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Guidare l'IA in un ragionamento passo-passo</strong> per ottenere risposte più accurate e verificabili.
+                    </p>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <p class="text-xs font-mono text-slate-600">
+                            "Risolvi questo problema passo dopo passo:<br><br>
+                            1. Identifica le variabili coinvolte<br>
+                            2. Spiega il metodo utilizzato<br>
+                            3. Esegui i calcoli intermedi<br>
+                            4. Concludi con la risposta finale<br><br>
+                            <span class="text-teal-600">Problema:</span> [inserisci il problema]"
+                        </p>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3">
+                        ✅ Perfetto per problemi di logica, matematica, analisi testuale complessa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tabella riepilogativa tecniche -->
+            <div class="mt-10 p-6 bg-gradient-to-r from-amber-50 to-teal-50 rounded-2xl border border-amber-200">
+                <h4 class="font-bold text-slate-800 mb-3">📋 Riepilogo Tecniche Avanzate</h4>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="font-bold text-teal-700">Few-Shot</span>
+                        <p class="text-slate-600 text-xs mt-1">Fornisci esempi per guidare lo stile e il formato della risposta.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="font-bold text-teal-700">Chain-of-Thought</span>
+                        <p class="text-slate-600 text-xs mt-1">Chiedi all'IA di mostrare il ragionamento passo passo.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="font-bold text-teal-700">Self-Consistency</span>
+                        <p class="text-slate-600 text-xs mt-1">Genera più risposte e confrontale per trovare la più affidabile.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <span class="font-bold text-teal-700">Role Prompting</span>
+                        <p class="text-slate-600 text-xs mt-1">Assegna un ruolo specifico (es. "esperto di letteratura").</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== RICHIAMO AGLI STRUMENTI DEL MODULO 1 ====== -->
+        <section class="p-8 bg-amber-50 rounded-2xl border-2 border-amber-200">
+            <div class="flex items-start gap-4">
+                <span class="text-3xl">🔗</span>
+                <div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Materiali del Modulo 1</h3>
+                    <p class="text-amber-700 text-sm leading-relaxed">
+                        Se hai perso il primo modulo, consulta la guida completa su Canva per creare autonomamente i tuoi materiali con gli strumenti che abbiamo utilizzato:
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="px-3 py-1 bg-white rounded-full text-sm text-amber-700 shadow-sm">🧠 Gemini</span>
+                        <span class="px-3 py-1 bg-white rounded-full text-sm text-amber-700 shadow-sm">🎨 Canva</span>
+                        <span class="px-3 py-1 bg-white rounded-full text-sm text-amber-700 shadow-sm">📊 Wayground</span>
+                        <span class="px-3 py-1 bg-white rounded-full text-sm text-amber-700 shadow-sm">⚡ Brisk</span>
+                        <span class="px-3 py-1 bg-white rounded-full text-sm text-amber-700 shadow-sm">📑 Gamma</span>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-block px-6 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition">
+                            📖 Vai alla guida del Modulo 1
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <p>© 2024 Corso Fondamenti di IA - Guida Metodologica per Docenti</p>
+        <p class="mt-2">
+            <a href="index.html" class="text-amber-600 hover:underline">← Torna alla bacheca moduli</a>
+        </p>
+    </footer>
+
+    <script>
+        // Scheda interattiva per la comparativa LLM
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Rimuovi active da tutti i bottoni
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Nascondi tutti i contenuti
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                // Mostra il contenuto selezionato
+                const tabId = this.dataset.tab;
+                document.getElementById('tab-' + tabId).classList.add('active');
+            });
+        });
+
+        // Highlight Navigation on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
