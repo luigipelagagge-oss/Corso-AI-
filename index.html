@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigare il Non-Determinismo: IA nella Didattica</title>
+    <title>Hub Didattico - IA nella Didattica</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -13,6 +13,7 @@
             --bg-warm: #fdfbf7;
             --accent-amber: #d97706;
             --accent-blue: #0369a1;
+            --accent-teal: #0d9488;
             --text-main: #334155;
         }
 
@@ -60,6 +61,10 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
+
+        .badge-obiettivo {
+            background: linear-gradient(135deg, var(--accent-amber), var(--accent-teal));
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -67,82 +72,68 @@
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 glass-card px-6 py-4 mb-8">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold text-slate-800">L'IA <span class="text-amber-600 underline">Probabilistica</span></h1>
+            <h1 class="text-xl font-bold text-slate-800">Hub <span class="text-amber-600 underline">Didattico</span></h1>
             <div class="hidden md:flex space-x-6 font-medium text-sm">
-                <a href="#teoria" class="nav-link hover:text-amber-600 transition">Teoria</a>
-                <a href="#tecnico" class="nav-link hover:text-amber-600 transition">Sicurezza</a>
-                <a href="#pedagogia" class="nav-link hover:text-amber-600 transition">Pedagogia</a>
-                <a href="#aula" class="nav-link hover:text-amber-600 transition">In Aula</a>
+                <a href="#obiettivo" class="nav-link hover:text-amber-600 transition">Obiettivo</a>
                 <a href="#moduli" class="nav-link hover:text-amber-600 transition">Moduli</a>
+                <a href="#teoria" class="nav-link hover:text-amber-600 transition">Teoria</a>
+                <a href="#consegne" class="nav-link hover:text-amber-600 transition">Consegne</a>
             </div>
         </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-6 pb-20">
 
-        <!-- Intro Header -->
-        <header class="text-center mb-16 fade-in">
-            <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">Hub dei Moduli</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-slate-900">Navigare il Non-Determinismo</h2>
+        <!-- Header -->
+        <header class="text-center mb-12 fade-in">
+            <span class="inline-block px-4 py-1 badge-obiettivo text-white text-xs font-bold rounded-full uppercase tracking-wider mb-4">Corso Web</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-slate-900">Navigare il Non-Determinismo</h1>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Questa guida interattiva trasforma il report metodologico in un kit di sopravvivenza per docenti.
-                Scopri perché l'IA non è un computer tradizionale e come usare i suoi "errori" per attivare il pensiero critico.
+                Benvenuti nel corso di formazione sull'IA nella didattica. Esploreremo insieme i fondamenti, gli strumenti e le strategie per integrare l'intelligenza artificiale in aula.
             </p>
         </header>
 
-        <!-- ====== MODULO 1: DOPPIO PULSANTE (Teoria + Pratica) ====== -->
-        <div class="my-12 p-8 bg-white rounded-2xl shadow-md border border-slate-200 max-w-4xl mx-auto">
-            <div class="text-center mb-6">
-                <span class="inline-block px-4 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-4">📌 Modulo 1</span>
-                <h3 class="text-2xl font-bold text-slate-800">Fondamenti di IA e Nuovi Paradigmi Didattici</h3>
-                <p class="text-slate-600 mt-2">Il modulo è suddiviso in due parti complementari:</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Pulsante 1: Teoria (già esistente) -->
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
-                    <span class="text-3xl block mb-2">📖</span>
-                    <h4 class="font-bold text-slate-800">Parte Teorica</h4>
-                    <p class="text-sm text-slate-600 mb-4">Fondamenti, modelli e paradigmi dell'IA</p>
-                    <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="inline-block w-full py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-medium transition">
-                        Vai alla Teoria →
-                    </a>
-                </div>
-
-                <!-- Pulsante 2: Pratica (NUOVO - IA Discriminativa) -->
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
-                    <span class="text-3xl block mb-2">🛠️</span>
-                    <h4 class="font-bold text-slate-800">Parte Pratica</h4>
-                    <p class="text-sm text-slate-600 mb-4">IA discriminativa e analisi letteraria</p>
-                    <a href="https://luigi-pelagagge.my.canva.site/sito-programma-di-letteratura-5-itis" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="inline-block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
-                        Vai alla Pratica →
-                    </a>
+        <!-- ====== OBIETTIVO COMUNE ====== -->
+        <section id="obiettivo" class="mb-16 scroll-mt-24">
+            <div class="bg-gradient-to-r from-amber-50 to-teal-50 rounded-2xl p-8 border-2 border-amber-200">
+                <div class="flex items-start gap-4">
+                    <span class="text-4xl">🎯</span>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 mb-2">Obiettivo Comune del Corso</h2>
+                        <p class="text-slate-700 leading-relaxed max-w-3xl">
+                            <strong>Creare un ecosistema didattico</strong> in cui docenti e studenti possano utilizzare l'IA come strumento di supporto, 
+                            <strong>non come sostituto</strong> del pensiero critico. Attraverso i moduli, acquisiremo competenze per:
+                        </p>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-700">
+                            <li class="flex items-center gap-2">✅ <span>Comprendere i limiti e le potenzialità dell'IA generativa</span></li>
+                            <li class="flex items-center gap-2">✅ <span>Applicare tecniche di Prompt Engineering per ottenere risposte utili</span></li>
+                            <li class="flex items-center gap-2">✅ <span>Progettare attività didattiche che integrino l'IA in modo critico</span></li>
+                            <li class="flex items-center gap-2">✅ <span>Valutare e correggere gli output generati dall'IA</span></li>
+                        </ul>
+                        <p class="mt-4 text-sm text-amber-700 bg-amber-100/50 p-3 rounded-lg">
+                            💡 <strong>Per i discenti:</strong> ogni modulo prevede esercizi pratici da ripetere e condividere. 
+                            Usate questa piattaforma come punto di partenza per le vostre attività.
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <p class="text-xs text-slate-400 text-center mt-4">Entrambi si aprono in una nuova scheda</p>
-        </div>
+        </section>
 
         <!-- ====== BACHECA MODULI ====== -->
         <section id="moduli" class="max-w-5xl mx-auto my-20 scroll-mt-24">
-            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">📋 Esplora tutti i Moduli</h2>
+            <h2 class="text-3xl font-bold text-center mb-4 text-slate-800">📋 I Moduli del Corso</h2>
+            <p class="text-center text-slate-600 mb-12">Ogni modulo è autonomo ma si collega all'obiettivo comune. Segui l'ordine o esplora liberamente.</p>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Modulo 1 (Esterno - Canva) - Ora con doppio link nella card -->
+                <!-- Modulo 1 -->
                 <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full">Esterno</span>
-                        <span class="text-3xl">🔗</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full">Completato</span>
+                        <span class="text-3xl">📖</span>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800">Modulo 1</h3>
-                    <p class="text-sm text-slate-600 mb-3">Fondamenti di IA e Nuovi Paradigmi Didattici</p>
+                    <p class="text-sm text-slate-600 mb-3">Fondamenti e Paradigmi</p>
                     <div class="space-y-2">
                         <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
                            target="_blank" 
@@ -159,23 +150,25 @@
                     </div>
                 </div>
 
-                <!-- Modulo 2 (Futuro - Interno su GitHub) -->
-                <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <!-- Modulo 2 (ORA ATTIVO) -->
+                <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border-2 border-teal-300">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded-full">Prossimamente</span>
-                        <span class="text-3xl">📄</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded-full">Attivo</span>
+                        <span class="text-3xl">🧊</span>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800">Modulo 2</h3>
-                    <p class="text-sm text-slate-600 mb-4">IA Generativa nella Scrittura Creativa</p>
-                    <div class="inline-block w-full text-center py-2 bg-slate-200 text-slate-400 rounded-lg font-medium text-sm cursor-not-allowed">
-                        In costruzione
-                    </div>
+                    <p class="text-sm text-slate-600 mb-4">Strumenti e Prompt Engineering</p>
+                    <a href="modulo2.html" 
+                       class="inline-block w-full text-center py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium text-sm transition">
+                        Vai al modulo →
+                    </a>
+                    <p class="text-xs text-teal-600 mt-2 text-center">Focus su DeepSeek e tecniche avanzate</p>
                 </div>
 
-                <!-- Modulo 3 (Futuro - Interno su GitHub) -->
+                <!-- Modulo 3 (Futuro) -->
                 <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded-full">Prossimamente</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-gray-100 text-gray-600 rounded-full">Prossimamente</span>
                         <span class="text-3xl">📄</span>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800">Modulo 3</h3>
@@ -188,7 +181,7 @@
             </div>
         </section>
 
-        <!-- ====== SEZIONI ESISTENTI (teoria, sicurezza, pedagogia, aula) ====== -->
+        <!-- ====== SEZIONI TEORIA/SICUREZZA/PEDAGOGIA/AULA (le stesse di prima) ====== -->
         <!-- Section 1: Teoria -->
         <section id="teoria" class="mb-24 scroll-mt-24">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -297,8 +290,58 @@
                         </table>
                     </div>
                 </div>
-                <!-- Sfondo decorativo -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 -mr-20 -mt-20 rounded-full"></div>
+            </div>
+        </section>
+
+        <!-- ====== CONSEGNE E ATTIVITÀ ====== -->
+        <section id="consegne" class="mb-24 scroll-mt-24">
+            <div class="p-8 bg-white rounded-2xl shadow-md border border-slate-200">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-3xl">📝</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Consegne e Attività per i Discenti</h2>
+                </div>
+                <p class="text-slate-600 mb-6">
+                    Ripeti gli esercizi svolti durante il corso e condividi i tuoi risultati. Ogni attività è pensata per consolidare le competenze acquisite.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Attività 1 -->
+                    <div class="p-5 bg-amber-50 rounded-xl border border-amber-200">
+                        <span class="text-xs font-bold px-2 py-1 bg-amber-200 text-amber-800 rounded-full">Modulo 1</span>
+                        <h4 class="font-bold text-slate-800 mt-2">Esercizio: Creare un esercizio con l'IA</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            Utilizza Gemini o Canva per generare un esercizio su un argomento a scelta. 
+                            <strong>Consegna:</strong> link al materiale creato.
+                        </p>
+                        <div class="mt-3 text-xs text-slate-500">
+                            <span class="block">📅 Scadenza: [inserisci data]</span>
+                            <span class="block">📤 Carica su: [piattaforma/area condivisione]</span>
+                        </div>
+                    </div>
+
+                    <!-- Attività 2 -->
+                    <div class="p-5 bg-teal-50 rounded-xl border border-teal-200">
+                        <span class="text-xs font-bold px-2 py-1 bg-teal-200 text-teal-800 rounded-full">Modulo 2</span>
+                        <h4 class="font-bold text-slate-800 mt-2">Esercizio: Prompt Engineering</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            Usa DeepSeek o ChatGPT per generare un piano di lezione. Applica le tecniche di few-shot e chain-of-thought.
+                            <strong>Consegna:</strong> prompt utilizzati e risposta ottenuta.
+                        </p>
+                        <div class="mt-3 text-xs text-slate-500">
+                            <span class="block">📅 Scadenza: [inserisci data]</span>
+                            <span class="block">📤 Carica su: [piattaforma/area condivisione]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-slate-100 rounded-lg border border-slate-200">
+                    <p class="text-sm text-slate-600">
+                        <strong>💡 Come partecipare:</strong> 
+                        Ogni attività va svolta individualmente o in gruppo. I risultati saranno discussi durante il prossimo incontro.
+                        Per dubbi o domande, utilizza il forum del corso.
+                    </p>
+                </div>
             </div>
         </section>
 
