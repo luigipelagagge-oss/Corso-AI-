@@ -52,31 +52,17 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
+
+        .card-modulo {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-modulo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- Chosen Palette: Warm Minimalist (Neutri caldi, ambra per l'azione, blu per la teoria) -->
-    <!-- Application Structure Plan: 
-        L'applicazione è strutturata come un percorso logico-narrativo diviso in 4 moduli:
-        1. "Il Cuore del Modello": Spiega il salto dal determinismo alla probabilità.
-        2. "Perché si Rompe?": Diagnostica tecnica (CORS, Link fantasma) resa visiva.
-        3. "Didattica dell'Errore": La sezione metodologica che trasforma il fallimento in risorsa.
-        4. "L'IA in Aula": Applicazione pratica alla letteratura (basata sulle slide).
-        
-        Interazioni chiave: 
-        - Simulatore di "Probabilità vs Regola" per visualizzare il non-determinismo.
-        - Grafici dinamici per confrontare IA Generativa e Discriminativa.
-        - Accordion interattive per il debugging mentale.
-        Questa struttura è stata scelta per facilitare la "digestione" di concetti tecnici da parte di utenti non esperti, fornendo subito soluzioni pratiche.
-    -->
-    <!-- Visualization & Content Choices: 
-        - Grafico a Ciambella (Chart.js): Per mostrare la ripartizione degli investimenti e focus dell'IA (Report Info -> Comparazione -> Chiaro e immediato).
-        - Simulatore JS: Per mostrare come un prompt uguale generi vettori diversi (Concetto astratto -> Esperienza interattiva -> Comprensione intuitiva).
-        - Liste Filtrabili: Per gli autori del 5° anno e le loro correnti (Dati tabellari -> Organizzazione -> Facilità di navigazione).
-        - Confirm: NO SVG used. NO Mermaid JS used.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 glass-card px-6 py-4 mb-8">
@@ -87,6 +73,7 @@
                 <a href="#tecnico" class="nav-link hover:text-amber-600 transition">Sicurezza</a>
                 <a href="#pedagogia" class="nav-link hover:text-amber-600 transition">Pedagogia</a>
                 <a href="#aula" class="nav-link hover:text-amber-600 transition">In Aula</a>
+                <a href="#moduli" class="nav-link hover:text-amber-600 transition">Moduli</a>
             </div>
         </div>
     </nav>
@@ -95,13 +82,79 @@
 
         <!-- Intro Header -->
         <header class="text-center mb-16 fade-in">
-            <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">Modulo 1: Fondamenti</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-slate-900">Comprendere i Limiti dell'IA</h2>
+            <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">Hub dei Moduli</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-slate-900">Navigare il Non-Determinismo</h2>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Questa guida interattiva trasforma il report metodologico in un kit di sopravvivenza per docenti. Scopri perché l'IA non è un computer tradizionale e come usare i suoi "errori" per attivare il pensiero critico dei tuoi studenti.
+                Questa guida interattiva trasforma il report metodologico in un kit di sopravvivenza per docenti.
+                Scopri perché l'IA non è un computer tradizionale e come usare i suoi "errori" per attivare il pensiero critico.
             </p>
         </header>
 
+        <!-- ====== PULSANTE VERSO CANVA (MODULO 1 ESTERNO) ====== -->
+        <div class="text-center my-12 p-8 bg-white rounded-2xl shadow-md border border-slate-200 max-w-3xl mx-auto">
+            <span class="inline-block px-4 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-4">📌 Corso Principale</span>
+            <h3 class="text-2xl font-bold text-slate-800 mb-3">Modulo 1: Fondamenti di IA e Nuovi Paradigmi Didattici</h3>
+            <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="inline-block px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white text-lg font-bold rounded-xl shadow-lg transition transform hover:scale-105">
+                📚 Vai al Modulo 1 su Canva
+            </a>
+            <p class="text-sm text-slate-500 mt-3">Si apre in una nuova scheda</p>
+        </div>
+
+        <!-- ====== BACHECA MODULI ====== -->
+        <section id="moduli" class="max-w-5xl mx-auto my-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">📋 Esplora tutti i Moduli</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Modulo 1 (Esterno - Canva) -->
+                <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full">Esterno</span>
+                        <span class="text-3xl">🔗</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Modulo 1</h3>
+                    <p class="text-sm text-slate-600 mb-4">Fondamenti di IA e Nuovi Paradigmi Didattici</p>
+                    <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-block w-full text-center py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium text-sm transition">
+                        Vai al modulo →
+                    </a>
+                </div>
+
+                <!-- Modulo 2 (Futuro - Interno su GitHub) -->
+                <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded-full">Prossimamente</span>
+                        <span class="text-3xl">📄</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Modulo 2</h3>
+                    <p class="text-sm text-slate-600 mb-4">IA Generativa nella Scrittura Creativa</p>
+                    <div class="inline-block w-full text-center py-2 bg-slate-200 text-slate-400 rounded-lg font-medium text-sm cursor-not-allowed">
+                        In costruzione
+                    </div>
+                </div>
+
+                <!-- Modulo 3 (Futuro - Interno su GitHub) -->
+                <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-700 rounded-full">Prossimamente</span>
+                        <span class="text-3xl">📄</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Modulo 3</h3>
+                    <p class="text-sm text-slate-600 mb-4">Etica e Limiti dell'IA in Aula</p>
+                    <div class="inline-block w-full text-center py-2 bg-slate-200 text-slate-400 rounded-lg font-medium text-sm cursor-not-allowed">
+                        In costruzione
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ====== SEZIONI ESISTENTI (teoria, sicurezza, pedagogia, aula) ====== -->
         <!-- Section 1: Teoria -->
         <section id="teoria" class="mb-24 scroll-mt-24">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -210,7 +263,7 @@
                         </table>
                     </div>
                 </div>
-                <!-- Sfondo decorativo con rettangoli stilizzati -->
+                <!-- Sfondo decorativo -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 -mr-20 -mt-20 rounded-full"></div>
             </div>
         </section>
@@ -238,6 +291,9 @@
 
     <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
         <p>© 2024 Corso Fondamenti di IA - Guida Metodologica per Docenti</p>
+        <p class="mt-2">
+            <a href="#moduli" class="text-amber-600 hover:underline">← Torna alla bacheca moduli</a>
+        </p>
     </footer>
 
     <script>
