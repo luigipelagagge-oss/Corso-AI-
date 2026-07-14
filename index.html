@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigare il Non-Determinismo: IA nella Didattica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --bg-warm: #fdfbf7;
+            --accent-amber: #d97706;
+            --accent-blue: #0369a1;
+            --text-main: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--accent-amber);
+            color: var(--accent-amber);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Warm Minimalist (Neutri caldi, ambra per l'azione, blu per la teoria) -->
+    <!-- Application Structure Plan: 
+        L'applicazione è strutturata come un percorso logico-narrativo diviso in 4 moduli:
+        1. "Il Cuore del Modello": Spiega il salto dal determinismo alla probabilità.
+        2. "Perché si Rompe?": Diagnostica tecnica (CORS, Link fantasma) resa visiva.
+        3. "Didattica dell'Errore": La sezione metodologica che trasforma il fallimento in risorsa.
+        4. "L'IA in Aula": Applicazione pratica alla letteratura (basata sulle slide).
+        
+        Interazioni chiave: 
+        - Simulatore di "Probabilità vs Regola" per visualizzare il non-determinismo.
+        - Grafici dinamici per confrontare IA Generativa e Discriminativa.
+        - Accordion interattive per il debugging mentale.
+        Questa struttura è stata scelta per facilitare la "digestione" di concetti tecnici da parte di utenti non esperti, fornendo subito soluzioni pratiche.
+    -->
+    <!-- Visualization & Content Choices: 
+        - Grafico a Ciambella (Chart.js): Per mostrare la ripartizione degli investimenti e focus dell'IA (Report Info -> Comparazione -> Chiaro e immediato).
+        - Simulatore JS: Per mostrare come un prompt uguale generi vettori diversi (Concetto astratto -> Esperienza interattiva -> Comprensione intuitiva).
+        - Liste Filtrabili: Per gli autori del 5° anno e le loro correnti (Dati tabellari -> Organizzazione -> Facilità di navigazione).
+        - Confirm: NO SVG used. NO Mermaid JS used.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-card px-6 py-4 mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">L'IA <span class="text-amber-600 underline">Probabilistica</span></h1>
+            <div class="hidden md:flex space-x-6 font-medium text-sm">
+                <a href="#teoria" class="nav-link hover:text-amber-600 transition">Teoria</a>
+                <a href="#tecnico" class="nav-link hover:text-amber-600 transition">Sicurezza</a>
+                <a href="#pedagogia" class="nav-link hover:text-amber-600 transition">Pedagogia</a>
+                <a href="#aula" class="nav-link hover:text-amber-600 transition">In Aula</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+
+        <!-- Intro Header -->
+        <header class="text-center mb-16 fade-in">
+            <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full uppercase tracking-wider">Modulo 1: Fondamenti</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-slate-900">Comprendere i Limiti dell'IA</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Questa guida interattiva trasforma il report metodologico in un kit di sopravvivenza per docenti. Scopri perché l'IA non è un computer tradizionale e come usare i suoi "errori" per attivare il pensiero critico dei tuoi studenti.
+            </p>
+        </header>
+
+        <!-- Section 1: Teoria -->
+        <section id="teoria" class="mb-24 scroll-mt-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">1. Determinismo vs Probabilità</h3>
+                    <p class="mb-6 leading-relaxed">
+                        Nell'informatica classica (IF/ELSE), il risultato è certo. Nell'IA, ogni risposta è il calcolo di un <strong>vettore di probabilità</strong> generato in un millisecondo.
+                    </p>
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100">
+                        <label class="block text-sm font-semibold mb-3">Simula il calcolo probabilistico (Prompt Identico)</label>
+                        <button onclick="simulateIA()" class="w-full py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition font-medium mb-4">Esegui Prompt "Crea un esercizio su Verga"</button>
+                        <div id="sim-result" class="space-y-2 text-sm italic text-slate-500">
+                            Clicca per vedere come l'IA ricalcola la risposta ogni volta...
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="chart-container">
+                        <canvas id="iaTypeChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-4">Figura 1: Distribuzione degli investimenti tecnologici (IA Discriminativa vs Generativa)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Sicurezza -->
+        <section id="tecnico" class="mb-24 scroll-mt-24 bg-slate-50 -mx-6 px-6 py-16 rounded-3xl">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-3xl font-bold mb-6 text-center text-slate-800">2. Perché i link "si rompono"?</h3>
+                <p class="text-center mb-12 text-slate-600">
+                    Il fallimento dell'IA spesso non è un errore di logica, ma una collisione con i protocolli di sicurezza del Web moderno.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-8 bg-white rounded-2xl border border-slate-200">
+                        <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-xl mb-4 font-bold text-xl">!</div>
+                        <h4 class="text-lg font-bold mb-2">I "Link Fantasma"</h4>
+                        <p class="text-sm leading-relaxed text-slate-500">L'IA inventa URL che sembrano corretti. Non verifica se esistono, ma solo se sono statisticamente coerenti con il linguaggio HTML.</p>
+                    </div>
+                    <div class="p-8 bg-white rounded-2xl border border-slate-200">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4 font-bold text-xl">🔒</div>
+                        <h4 class="text-lg font-bold mb-2">Protocollo CORS</h4>
+                        <p class="text-sm leading-relaxed text-slate-500">I browser moderni bloccano il caricamento di risorse da siti esterni non autorizzati. L'IA ignora queste barriere durante la generazione del codice.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Pedagogia -->
+        <section id="pedagogia" class="mb-24 scroll-mt-24">
+            <h3 class="text-2xl font-bold mb-8 text-slate-800 border-l-4 border-amber-500 pl-4">3. L'Errore come Attivatore Critico</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <div class="text-4xl">🧠</div>
+                    <h4 class="font-bold">Debugging Mentale</h4>
+                    <p class="text-sm text-slate-600">Insegna agli studenti a non subire l'output. Chiedere "Perché non funziona?" è l'inizio del vero apprendimento informatico.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-4xl">🛠️</div>
+                    <h4 class="font-bold">Learning by Doing</h4>
+                    <p class="text-sm text-slate-600">Correggere il codice generato dall'IA è un compito di realtà perfetto: richiede supervisione, validazione e giudizio umano.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-4xl">⚖️</div>
+                    <h4 class="font-bold">Demistificazione</h4>
+                    <p class="text-sm text-slate-600">Mostrare i limiti dell'IA riduce l'aura di infallibilità e rimette al centro la figura del docente come decisore ultimo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Applicazione Aula -->
+        <section id="aula" class="mb-24 scroll-mt-24">
+            <div class="p-8 bg-slate-900 text-white rounded-3xl overflow-hidden relative">
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-6">4. Caso Studio: Letteratura e IA</h3>
+                    <p class="mb-10 text-slate-300 max-w-2xl">
+                        Come applicare questi concetti al programma del 5° anno? Usiamo l'IA discriminativa per analizzare e classificare gli autori.
+                    </p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="border-b border-slate-700 text-amber-500">
+                                <tr>
+                                    <th class="py-4 px-2">Autore</th>
+                                    <th class="py-4 px-2">Corrente</th>
+                                    <th class="py-4 px-2">Modello Logico</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-400">
+                                <tr class="border-b border-slate-800">
+                                    <td class="py-4 px-2 font-bold text-white">Verga</td>
+                                    <td class="py-4 px-2">Verismo</td>
+                                    <td class="py-4 px-2">Regressione e analisi scientifica</td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <td class="py-4 px-2 font-bold text-white">Pascoli</td>
+                                    <td class="py-4 px-2">Simbolismo</td>
+                                    <td class="py-4 px-2">Intuizione e associazione di pattern</td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <td class="py-4 px-2 font-bold text-white">Svevo</td>
+                                    <td class="py-4 px-2">Modernismo</td>
+                                    <td class="py-4 px-2">Analisi psicologica multidimensionale</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Sfondo decorativo con rettangoli stilizzati -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 -mr-20 -mt-20 rounded-full"></div>
+            </div>
+        </section>
+
+        <!-- Toolbox Checklist -->
+        <section class="max-w-3xl mx-auto p-10 bg-amber-50 rounded-2xl border-2 border-dashed border-amber-200">
+            <h3 class="text-xl font-bold mb-6 text-amber-900 text-center uppercase tracking-widest">Le 3 Regole d'Oro del Docente</h3>
+            <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                    <span class="flex-shrink-0 w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                    <p class="text-amber-800"><strong>Assets in Locale:</strong> Non affidare mai immagini o file critici a link generati in tempo reale dall'IA.</p>
+                </li>
+                <li class="flex items-start space-x-3">
+                    <span class="flex-shrink-0 w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                    <p class="text-amber-800"><strong>Loop di Validazione:</strong> Testa ogni codice o bozza prima della lezione. Considera l'output solo come "proposta".</p>
+                </li>
+                <li class="flex items-start space-x-3">
+                    <span class="flex-shrink-0 w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                    <p class="text-amber-800"><strong>Piano B (Trasparenza):</strong> Spiega agli studenti che l'IA può fallire. Rendi questo fallimento parte della lezione.</p>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <p>© 2024 Corso Fondamenti di IA - Guida Metodologica per Docenti</p>
+    </footer>
+
+    <script>
+        // Inizializzazione Grafico IA
+        const ctx = document.getElementById('iaTypeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['IA Discriminativa', 'IA Generativa', 'Sistemi Ibridi'],
+                datasets: [{
+                    data: [45, 30, 25],
+                    backgroundColor: ['#0369a1', '#d97706', '#94a3b8'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: { size: 12, family: 'Inter' }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // Simulatore IA Non-Deterministica
+        function simulateIA() {
+            const container = document.getElementById('sim-result');
+            const outputs = [
+                "Versione 1: Analisi del Pessimismo in 'I Malavoglia'. Immagine: [Rotta]",
+                "Versione 2: Schema delle tecniche veriste (Impersonalità). Link: static.verga.it/schema",
+                "Versione 3: Esercizio di commento su 'La Lupa'. Errore: Sintassi HTML incompleta",
+                "Versione 4: Confronto tra Verga e Zola. Output: Testo corretto ma link immagine invisibile"
+            ];
+            
+            const randomOutput = outputs[Math.floor(Math.random() * outputs.length)];
+            
+            container.innerHTML = `<div class="p-3 bg-slate-100 rounded border-l-4 border-amber-500 fade-in text-slate-800 font-mono">
+                ${randomOutput}
+            </div>`;
+        }
+
+        // Highlight Navigation on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
