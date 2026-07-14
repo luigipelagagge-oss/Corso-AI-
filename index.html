@@ -90,17 +90,43 @@
             </p>
         </header>
 
-        <!-- ====== PULSANTE VERSO CANVA (MODULO 1 ESTERNO) ====== -->
-        <div class="text-center my-12 p-8 bg-white rounded-2xl shadow-md border border-slate-200 max-w-3xl mx-auto">
-            <span class="inline-block px-4 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-4">📌 Corso Principale</span>
-            <h3 class="text-2xl font-bold text-slate-800 mb-3">Modulo 1: Fondamenti di IA e Nuovi Paradigmi Didattici</h3>
-            <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-block px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white text-lg font-bold rounded-xl shadow-lg transition transform hover:scale-105">
-                📚 Vai al Modulo 1 su Canva
-            </a>
-            <p class="text-sm text-slate-500 mt-3">Si apre in una nuova scheda</p>
+        <!-- ====== MODULO 1: DOPPIO PULSANTE (Teoria + Pratica) ====== -->
+        <div class="my-12 p-8 bg-white rounded-2xl shadow-md border border-slate-200 max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <span class="inline-block px-4 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-4">📌 Modulo 1</span>
+                <h3 class="text-2xl font-bold text-slate-800">Fondamenti di IA e Nuovi Paradigmi Didattici</h3>
+                <p class="text-slate-600 mt-2">Il modulo è suddiviso in due parti complementari:</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Pulsante 1: Teoria (già esistente) -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
+                    <span class="text-3xl block mb-2">📖</span>
+                    <h4 class="font-bold text-slate-800">Parte Teorica</h4>
+                    <p class="text-sm text-slate-600 mb-4">Fondamenti, modelli e paradigmi dell'IA</p>
+                    <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-block w-full py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-medium transition">
+                        Vai alla Teoria →
+                    </a>
+                </div>
+
+                <!-- Pulsante 2: Pratica (NUOVO - IA Discriminativa) -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
+                    <span class="text-3xl block mb-2">🛠️</span>
+                    <h4 class="font-bold text-slate-800">Parte Pratica</h4>
+                    <p class="text-sm text-slate-600 mb-4">IA discriminativa e analisi letteraria</p>
+                    <a href="https://luigi-pelagagge.my.canva.site/sito-programma-di-letteratura-5-itis" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
+                        Vai alla Pratica →
+                    </a>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-400 text-center mt-4">Entrambi si aprono in una nuova scheda</p>
         </div>
 
         <!-- ====== BACHECA MODULI ====== -->
@@ -109,20 +135,28 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Modulo 1 (Esterno - Canva) -->
+                <!-- Modulo 1 (Esterno - Canva) - Ora con doppio link nella card -->
                 <div class="card-modulo bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full">Esterno</span>
                         <span class="text-3xl">🔗</span>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800">Modulo 1</h3>
-                    <p class="text-sm text-slate-600 mb-4">Fondamenti di IA e Nuovi Paradigmi Didattici</p>
-                    <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="inline-block w-full text-center py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium text-sm transition">
-                        Vai al modulo →
-                    </a>
+                    <p class="text-sm text-slate-600 mb-3">Fondamenti di IA e Nuovi Paradigmi Didattici</p>
+                    <div class="space-y-2">
+                        <a href="https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="block w-full text-center py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-lg font-medium text-sm transition">
+                            📖 Teoria
+                        </a>
+                        <a href="https://luigi-pelagagge.my.canva.site/sito-programma-di-letteratura-5-itis" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="block w-full text-center py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium text-sm transition">
+                            🛠️ Pratica (IA Discriminativa)
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Modulo 2 (Futuro - Interno su GitHub) -->
