@@ -1,5 +1,3 @@
-# Corso-AI-
-Sito di illustrazione su  come utilizzare una AI generativa o una AI discriminativa.
 # Navigare il Non-Determinismo - IA nella Didattica
 
 > Una guida interattiva per docenti che trasforma il report metodologico sull'IA in un kit pratico di sopravvivenza per l'aula.
@@ -19,7 +17,19 @@ Il progetto è costruito con strumenti leggeri e moderni, tutti caricati via CDN
 
 Il repository è estremamente semplice perché il sito è interamente contenuto in un unico file:
 
+/
+├── index.html # L'intera applicazione (HTML, CSS, JS) + Hub dei Moduli
+└── README.md # Questo file
+
 Tutti gli assets (font, librerie) vengono risolti in remoto, quindi non ci sono cartelle `css` o `js` da gestire.
+
+## 📚 Moduli disponibili
+
+| Modulo | Titolo | Piattaforma | Link |
+|--------|--------|-------------|------|
+| 1 | Fondamenti di IA e Nuovi Paradigmi Didattici | Canva (esterno) | [Vai al modulo](https://luigi-pelagagge.my.canva.site/metodologie-didattiche-e-ia) |
+| 2 | IA Generativa nella Scrittura Creativa | GitHub (in sviluppo) | - |
+| 3 | Etica e Limiti dell'IA in Aula | GitHub (in sviluppo) | - |
 
 ## 🚀 Come Effettuare la Manutenzione
 
@@ -38,6 +48,11 @@ Tutti gli assets (font, librerie) vengono risolti in remoto, quindi non ci sono 
 
 ### Modificare le risposte del simulatore
 - Cerca la funzione `simulateIA()` e all'interno dell'array `outputs`. Aggiungi o modifica le stringhe per cambiare gli esempi di output dell'IA.
+
+### Aggiungere un nuovo modulo
+1. Crea un nuovo file HTML (es. `modulo2.html`) copiando la struttura di `index.html`.
+2. Modifica i contenuti per il nuovo argomento.
+3. Nella sezione "Bacheca Moduli" di `index.html`, sostituisci la card "Prossimamente" con una card funzionante che punti al nuovo file.
 
 ## 🌐 Pubblicazione
 
@@ -59,7 +74,8 @@ Questo sito è progettato per essere ospitato su **GitHub Pages**:
 - Aggiungere un dark mode toggle.
 - Integrare più autori nella tabella del caso studio.
 - Salvare lo storico delle simulazioni in una lista.
+- Creare pagine HTML per i moduli 2 e 3.
 
 ---
 
-*Progetto realizzato per il corso di aggiornamento docenti – 2026*
+*Progetto realizzato per il corso di aggiornamento docenti – 2024*
